@@ -8,7 +8,6 @@
         <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.ac</groupId>
     <artifactId>mall-common</artifactId>
     <version>${mall.version}</version>
     <name>mall-common</name>

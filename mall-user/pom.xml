@@ -12,6 +12,16 @@
     <version>${mall.version}</version>
     <name>mall-user</name>
     <description>用户服务</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>mall-common</artifactId>
+            <version>${mall.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

@@ -2,7 +2,7 @@ package org.example.user.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.example.user.enums.UserSexEnum;
+import org.example.common.enums.UserSexEnum;
 
 import java.time.LocalDate;
 

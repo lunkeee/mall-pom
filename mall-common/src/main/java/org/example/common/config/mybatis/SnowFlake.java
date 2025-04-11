@@ -1,4 +1,4 @@
-package org.example.user.config.mybatis;
+package org.example.common.config.mybatis;
 
 import com.baomidou.mybatisplus.core.toolkit.SystemClock;
 import lombok.extern.slf4j.Slf4j;

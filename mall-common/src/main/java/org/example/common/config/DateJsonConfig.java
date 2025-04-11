@@ -1,4 +1,4 @@
-package org.example.user.config;
+package org.example.common.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
