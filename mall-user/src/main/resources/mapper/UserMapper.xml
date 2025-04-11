@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.user.mapper.UserMapper">
+    <sql id="MemberDTO_Column">
+        t.id,
+        t.username,
+        t.mobile,
+        t.sex,
+        t.birthday
+    </sql>
+    <select id="searchUser" resultType="org.example.user.dto.UserDTO">
+        select
+        <include refid="MemberDTO_Column"/>
+        from
+        user t
+        <where>
+            t.deleted = 0
+            <if test="qry.userName!=null and qry.userName!=''">
+                and t.username like concat('%', #{qry.userName}, '%')
+            </if>
+            <if test="qry.mobile!=null and qry.mobile!=''">
+                and t.mobile = #{qry.mobile}
+            </if>
+        </where>
+        order by t.create_time desc
+    </select>
+</mapper>
