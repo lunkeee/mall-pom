@@ -1,2 +1,11 @@
-/.idea/
-/target/
+# 构建输出
+**/target/
+**/build/
+
+# IDE
+**/.idea/
+**/*.iml
+
+# 系统文件
+.DS_Store
+Thumbs.db
