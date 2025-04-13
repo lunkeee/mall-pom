@@ -21,6 +21,9 @@ public class SwaggerConfig implements WebMvcConfigurer {
     //是否开启swagger，生产环境一般关闭
     @Value("${swagger.enabled}")
     private boolean enabled;
+
+    @Value("${swagger.packages}")
+    private String packages;
     /**
      * @return
      */
@@ -31,7 +34,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .apiInfo(apiInfo())
                 .select()
                 //.apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("org.example.user.controller"))
+                .apis(RequestHandlerSelectors.basePackage(packages))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -42,8 +45,8 @@ public class SwaggerConfig implements WebMvcConfigurer {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("用户服务")
-                .description("用户服务相关接口")
+                .title("Mall服务")
+                .description("相关接口文档")
                 .termsOfServiceUrl("")
                 .version("1.0")
                 .build();

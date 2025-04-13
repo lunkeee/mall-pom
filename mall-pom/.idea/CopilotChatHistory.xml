@@ -4,6 +4,12 @@
     <option name="conversations">
       <list>
         <Conversation>
+          <option name="createTime" value="1744531625687" />
+          <option name="id" value="01962e3016d777cd80cfe3e9d849374c" />
+          <option name="title" value="新对话 2025年4月13日 16:07:05" />
+          <option name="updateTime" value="1744531625687" />
+        </Conversation>
+        <Conversation>
           <option name="createTime" value="1744468127598" />
           <option name="id" value="019628ad946f7550972da7022dd22259" />
           <option name="title" value="@workspace-- example_mall.product_spu definition&#10;&#10;CREATE TABLE `product_spu` (&#10;  `spu_id` bigint NOT NULL COMMENT '标准产品单元ID',&#10;  `spu_name` varchar(200) NOT NULL COMMENT '商品名称',&#10;  `category_id` bigint NOT NULL COMMENT '类目ID',&#10;  `brand_id` bigint DEFAULT NULL COMMENT '品牌ID',&#10;  `main_image` varchar(255) DEFAULT NULL COMMENT '主图URL',&#10;  `description` text COMMENT '商品描述（富文本）',&#10;  `sales` int NOT NULL DEFAULT '0' COMMENT '总销量',&#10;  `status` tinyint NOT NULL DEFAULT '1' COMMENT '状态（0下架/1上架）',&#10;  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,&#10;  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,&#10;  PRIMARY KEY (`spu_id`),&#10;  KEY `idx_category` (`category_id`),&#10;  KEY `idx_brand` (`brand_id`)&#10;) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品SPU表';&#10;&#10;完善整个do类" />

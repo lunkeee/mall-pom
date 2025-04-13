@@ -23,3 +23,4 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 swagger:
   enabled: true
+  packages: org.example.user.controller

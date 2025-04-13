@@ -18,8 +18,19 @@ spring:
       max-lifetime: 1800000 #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
       connection-timeout: 30000 #数据库连接超时时间,默认30秒，即30000
       connection-test-query: SELECT 1
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 swagger:
   enabled: true
+  packages: org.example.product.controller

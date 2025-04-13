@@ -11,22 +11,22 @@ public interface UserService {
     /**
      * 通过ID查询
      *
-     * @param id
-     * @return
+     * @param id userId
+     * @return User
      */
     User findById(Long id);
     /**
      * 新增用户
      *
-     * @param editVO
-     * @return
+     * @param editVO 编辑
+     * @return Boolean
      */
     Boolean addUser(UserEditVO editVO);
     /**
      * 查询用户
      *
-     * @param qry
-     * @return
+     * @param qry 查询体
+     * @return List<UserDTO>
      */
     List<UserDTO> searchUser(UserQry qry);
 }
