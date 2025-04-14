@@ -6,10 +6,7 @@ import org.example.common.utils.R;
 import org.example.product.modules.DO.ProductSPU;
 import org.example.product.service.ProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,6 +22,13 @@ public class ProductController {
     @ApiOperation(value = "测试")
     @GetMapping("/test")
     public ResponseEntity<R<String>> test() {
+        return ResponseEntity.ok(R.success("hello world"));
+    }
+
+    @ApiOperation(value = "测试Redis")
+    @PostMapping("/test/redis")
+    public ResponseEntity<R<String>> test(@RequestParam String name) {
+        productServiceImpl.testRedis(name);
         return ResponseEntity.ok(R.success("hello world"));
     }
 

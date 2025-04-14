@@ -34,6 +34,5 @@ public interface ProductService {
     List<ProductSKUResponse> getProductSKUs(ProductSKUResponse qry);
 
 
-
-
+    void testRedis(String name);
 }

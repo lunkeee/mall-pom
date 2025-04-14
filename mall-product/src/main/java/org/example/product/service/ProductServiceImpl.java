@@ -2,6 +2,8 @@ package org.example.product.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.utils.R;
+import org.example.common.utils.RedisUtil;
+
 import org.example.product.mapper.ProductSKUMapper;
 import org.example.product.mapper.ProductSPUMapper;
 import org.example.product.modules.DO.ProductSPU;
@@ -16,6 +18,9 @@ import java.util.List;
 @Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
+
+    @Resource
+    private RedisUtil redisUtil;
 
     @Resource
     private ProductSKUMapper productSKUMapper;
@@ -41,5 +46,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductSKUResponse> getProductSKUs(ProductSKUResponse qry) {
         return Collections.emptyList();
+    }
+
+    @Override
+    public void testRedis(String name) {
+
     }
 }
