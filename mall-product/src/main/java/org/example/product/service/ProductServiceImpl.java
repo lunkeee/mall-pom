@@ -31,6 +31,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public R<ProductSPU> findSPUById(Long id) {
 
+        Thread currentThread = Thread.currentThread();
+
         // 如果缓存有数据，直接返回
 
         // 没有缓存，从数据库查询
@@ -50,6 +52,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void testRedis(String name) {
-
+        redisUtil.set("name", name);
     }
 }

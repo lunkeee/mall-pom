@@ -2,12 +2,9 @@ package org.example.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -20,10 +17,10 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtil {
     private final RedisTemplate<String, Object> redisTemplate;
 
-    @Value("${redis.session.prefix}")
+    @Value("${redis.session.prefix:user:session:}") // 添加默认值
     private String sessionTokenPrefix;
 
-    @Value("${redis.session.expiration}") // 默认30分钟
+    @Value("${redis.session.expiration:1800}") // 添加默认值（30分钟=1800秒）
     private long sessionTokenExpiration;
 
     @Autowired
@@ -31,17 +28,6 @@ public class RedisUtil {
         this.redisTemplate = redisTemplate;
     }
 
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new StringRedisSerializer());
-        template.setHashKeySerializer(new StringRedisSerializer());
-        template.setHashValueSerializer(new StringRedisSerializer());
-        template.afterPropertiesSet();
-        return template;
-    }
 
     // ---------------------- Session Management ----------------------
 
