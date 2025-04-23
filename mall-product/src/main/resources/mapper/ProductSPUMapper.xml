@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.product.mapper.ProductSPUMapper">
 
+    <select id="getProductSPUs" resultType="org.example.product.modules.DO.ProductSPU">
+        SELECT p.*
+        FROM product_spu p
+                 JOIN (SELECT spu_id FROM product_spu LIMIT #{pageStart},#{pageSize}) a ON p.spu_id = a.spu_id;
+    </select>
 </mapper>

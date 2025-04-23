@@ -3,11 +3,13 @@ package org.example.product.service;
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.utils.R;
 import org.example.common.utils.RedisUtil;
-
+import org.example.product.mapper.ProductCategoryMapper;
 import org.example.product.mapper.ProductSKUMapper;
 import org.example.product.mapper.ProductSPUMapper;
 import org.example.product.modules.DO.ProductSPU;
-import org.example.product.modules.Response.ProductSKUResponse;
+import org.example.product.modules.Request.ProductListRequest;
+import org.example.product.modules.Response.ProductCategoryResponse;
+import org.example.product.modules.Response.ProductResponse;
 import org.example.product.modules.Response.ProductSPUResponse;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,9 @@ public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductSPUMapper productSPUMapper;
 
+    @Resource
+    private ProductCategoryMapper productCategoryMapper;
+
     @Override
     public R<ProductSPU> findSPUById(Long id) {
 
@@ -41,17 +46,27 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductSPUResponse> getProductSPUs(ProductSKUResponse qry) {
+    public List<ProductSPUResponse> getProductSPUs(ProductListRequest qry) {
+
+        // 从数据库查询
+        List<ProductSPU> productSPUs = productSPUMapper.getProductSPUs(qry);
+
         return Collections.emptyList();
     }
 
     @Override
-    public List<ProductSKUResponse> getProductSKUs(ProductSKUResponse qry) {
-        return Collections.emptyList();
+    public ProductResponse getProductSPUById(int id) {
+        return null;
     }
+
 
     @Override
     public void testRedis(String name) {
         redisUtil.set("name", name);
+    }
+
+    @Override
+    public List<ProductCategoryResponse> getCategoryList() {
+        return productCategoryMapper.getCategoryList();
     }
 }

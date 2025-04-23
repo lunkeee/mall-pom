@@ -4,6 +4,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.example.common.utils.R;
 import org.example.product.modules.DO.ProductSPU;
+import org.example.product.modules.Request.ProductListRequest;
+import org.example.product.modules.Response.ProductCategoryResponse;
+import org.example.product.modules.Response.ProductResponse;
+import org.example.product.modules.Response.ProductSPUResponse;
 import org.example.product.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,28 +31,42 @@ public class ProductController {
 
     @ApiOperation(value = "测试Redis")
     @PostMapping("/test/redis")
-    public ResponseEntity<R<String>> test(@RequestParam String name) {
+    public R<String> test(@RequestParam String name) {
         productServiceImpl.testRedis(name);
-        return ResponseEntity.ok(R.success("hello world"));
+        return R.success("hello world");
     }
 
     @ApiOperation(value = "通过ID查询SPU")
     @GetMapping("/spu/{id}")
-    public ResponseEntity<R<ProductSPU>> findSPUById(@PathVariable Long id) {
+    public R<ProductSPU> findSPUById(@PathVariable Long id) {
         R<ProductSPU> result = productServiceImpl.findSPUById(id);
         if(result.getCode() == 200){
-            return ResponseEntity.ok().body(result);
+            return result;
         }else{
-            return ResponseEntity.badRequest().body(result);
+            return result;
         }
+    }
 
+    @ApiOperation(value = "商品分类列表")
+    @GetMapping("/list-category")
+    public R<List<ProductCategoryResponse>> getCategoryList(){
+        List<ProductCategoryResponse> result = productServiceImpl.getCategoryList();
+        return R.success(result);
     }
 
     @ApiOperation(value = "默认商品列表-根据关键词搜索商品-根据分类搜索商品")
-    @GetMapping("/list")
-    public ResponseEntity<R<List<ProductSPU>>> getProductList() {
-//        ResultResponse<List<ProductSPU>> response = productServiceImpl.getProductSPUs(null);
-        return ResponseEntity.ok(R.success(null));
+    @GetMapping("/list-product")
+    public R<List<ProductSPUResponse>> getProductList(@RequestBody ProductListRequest qry) {
+        List<ProductSPUResponse> response = productServiceImpl.getProductSPUs(qry);
+        return R.success(response);
     }
+
+    @ApiOperation(value = "获取商品spu信息-附带所有sku信息")
+    @GetMapping("/product/spu/{id}")
+    public R<ProductResponse> getProductSPUById(@PathVariable int id){
+        ProductResponse response = productServiceImpl.getProductSPUById(id);
+        return R.success(response);
+    }
+
 
 }
