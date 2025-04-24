@@ -5,5 +5,4 @@ import org.example.common.baseMoudles.PageBase;
 public class ProductListRequest extends PageBase {
 
 
-
 }

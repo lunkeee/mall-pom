@@ -1,12 +1,10 @@
 package org.example.product.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.common.utils.R;
 import org.example.common.utils.RedisUtil;
 import org.example.product.mapper.ProductCategoryMapper;
 import org.example.product.mapper.ProductSKUMapper;
 import org.example.product.mapper.ProductSPUMapper;
-import org.example.product.modules.DO.ProductSPU;
 import org.example.product.modules.Request.ProductListRequest;
 import org.example.product.modules.Response.ProductCategoryResponse;
 import org.example.product.modules.Response.ProductResponse;
@@ -14,8 +12,8 @@ import org.example.product.modules.Response.ProductSPUResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -33,29 +31,42 @@ public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductCategoryMapper productCategoryMapper;
 
-    @Override
-    public R<ProductSPU> findSPUById(Long id) {
-
-        Thread currentThread = Thread.currentThread();
-
-        // 如果缓存有数据，直接返回
-
-        // 没有缓存，从数据库查询
-
-        return null;
-    }
 
     @Override
     public List<ProductSPUResponse> getProductSPUs(ProductListRequest qry) {
 
         // 从数据库查询
-        List<ProductSPU> productSPUs = productSPUMapper.getProductSPUs(qry);
+        List<ProductSPUResponse> productSPUs = productSPUMapper.getProductSPUs(qry);
 
-        return Collections.emptyList();
+        return productSPUs;
     }
 
     @Override
-    public ProductResponse getProductSPUById(int id) {
+    public ProductResponse getProductSPUById(int spuId) {
+        String spuKey = "product:spu:" + spuId;
+
+        // 1. 先从缓存中查询
+        ProductResponse productResponse = (ProductResponse) redisUtil.get("productSPU_" + spuId);
+
+        if (productResponse != null){
+            // 有缓存，直接返回
+            return productResponse;
+        }
+
+        // 2. 缓存未命中，从数据库查询
+        // redis分布式锁
+        String requestId = UUID.randomUUID().toString();
+//        try{
+//            boolean locked = redisUtil.set
+//        }
+
+        productResponse = productSPUMapper.getProductSPUById(spuId);
+
+        if (productResponse != null){
+            // 数据库查到了返回，否则，报错，并且写入空数据缓存
+            return productResponse;
+        }
+
         return null;
     }
 

@@ -2,9 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.product.mapper.ProductSPUMapper">
 
-    <select id="getProductSPUs" resultType="org.example.product.modules.DO.ProductSPU">
-        SELECT p.*
-        FROM product_spu p
-                 JOIN (SELECT spu_id FROM product_spu LIMIT #{pageStart},#{pageSize}) a ON p.spu_id = a.spu_id;
+    <resultMap id="ProductResponse" type="org.example.product.modules.Response.ProductResponse">
+        <result column="spu_id" property="spuId"/>
+        <association property="skuList" column="spu_id"
+                     select="org.example.product.mapper.ProductSKUMapper.getSKUBySpuId"/>
+    </resultMap>
+
+    <select id="getProductSPUs" resultType="org.example.product.modules.Response.ProductSPUResponse">
+        SELECT
+            p.spu_id,
+            p.spu_name,
+            p.category_id,
+            p.main_image,
+            p.description,
+            p.sales,
+            MAX(k.price) AS price
+        FROM
+            (SELECT * FROM product_spu ORDER BY spu_id LIMIT #{pageStart},#{pageSize}) p
+        LEFT JOIN
+            product_sku k ON p.spu_id = k.spu_id
+        GROUP BY
+            p.spu_id, p.spu_name, p.category_id, p.main_image, p.sales
+    </select>
+
+    <select id="getProductSPUById" resultMap="ProductResponse">
+        select p.spu_id,
+               p.spu_name,
+               p.category_id,
+               p.main_image,
+               p.description,
+               p.sales
+        from product_spu p
+        where p.spu_id = #{spuId};
+    </select>
+
+    <select id="getSKUBySpuId" resultType="org.example.product.modules.Response.ProductResponse">
+        select k.* from product_sku k where k.spu_id = #{spuId};
     </select>
 </mapper>

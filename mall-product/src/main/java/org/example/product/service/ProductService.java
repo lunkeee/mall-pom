@@ -1,7 +1,5 @@
 package org.example.product.service;
 
-import org.example.common.utils.R;
-import org.example.product.modules.DO.ProductSPU;
 import org.example.product.modules.Request.ProductListRequest;
 import org.example.product.modules.Response.ProductCategoryResponse;
 import org.example.product.modules.Response.ProductResponse;
@@ -10,15 +8,6 @@ import org.example.product.modules.Response.ProductSPUResponse;
 import java.util.List;
 
 public interface ProductService {
-
-    /**
-     * 通过ID查询SPU
-     *
-     * @param id productSPU id
-     * @return ProductSPU
-     */
-    R<ProductSPU> findSPUById(Long id);
-
 
     /**
      * 查看所有商品分类
@@ -39,8 +28,8 @@ public interface ProductService {
     /**
      * 查看具体商品SKU
      *
-     * @param id spu_id
-     * @return List<UserDTO>
+     * @param id productSPU id
+     * @return ProductSPU
      */
     ProductResponse getProductSPUById(int id);
 
