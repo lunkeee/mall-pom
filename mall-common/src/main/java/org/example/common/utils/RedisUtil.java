@@ -453,7 +453,6 @@ public class RedisUtil {
         return redisTemplate.execute(callback);
     }
 
-    // 2. 获取分布式锁
     /**
      * 获取分布式锁
      * @param lockKey 事务回调
@@ -463,7 +462,7 @@ public class RedisUtil {
      * lockKey, requestId, 30, TimeUnit.SECONDS
      * @return 执行结果
      */
-    public Boolean test(String lockKey, String requestId, int expireTime, TimeUnit timeUnit){
+    public Boolean getLock(String lockKey, String requestId, int expireTime, TimeUnit timeUnit){
         return redisTemplate.opsForValue().setIfAbsent(lockKey, requestId, expireTime, timeUnit);
     }
 
