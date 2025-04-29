@@ -458,12 +458,11 @@ public class RedisUtil {
      * @param lockKey 事务回调
      * @param requestId 请求标识
      * @param expireTime 过期时间
-     * @param timeUnit 时间格式
-     * lockKey, requestId, 30, TimeUnit.SECONDS
+     * lockKey, requestId, 3000, TimeUnit.SECONDS 时间格式默认秒
      * @return 执行结果
      */
-    public Boolean getLock(String lockKey, String requestId, int expireTime, TimeUnit timeUnit){
-        return redisTemplate.opsForValue().setIfAbsent(lockKey, requestId, expireTime, timeUnit);
+    public Boolean getLock(String lockKey, String requestId, int expireTime){
+        return redisTemplate.opsForValue().setIfAbsent(lockKey, requestId, expireTime, TimeUnit.SECONDS);
     }
 
 }

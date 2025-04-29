@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     @ApiOperation(value = "默认商品列表-根据关键词搜索商品-根据分类搜索商品")
-    @PostMapping("/list-product")
+    @PostMapping("/list-spu")
     public R<List<ProductSPUResponse>> getProductList(@RequestBody ProductListRequest qry) {
         List<ProductSPUResponse> response = productServiceImpl.getProductSPUs(qry);
         return R.success(response);
