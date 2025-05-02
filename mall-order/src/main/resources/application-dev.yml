@@ -31,6 +31,11 @@ spring:
         min-idle: 12 # 连接池中的最小空闲连接
       shutdown-timeout: 2000  # 关闭连接的超时时间,单位毫秒
     timeout: 2000  # 全局命令超时时间
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
