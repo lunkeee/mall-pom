@@ -1,6 +1,6 @@
 package org.example.common.utils;
 
-public class BusinessException extends RuntimeException {
+public class BusinessException extends RuntimeException implements BaseErrorInfoInterface{
 
     private static final long serialVersionUID = 1L;
 
@@ -12,15 +12,15 @@ public class BusinessException extends RuntimeException {
     }
 
     public BusinessException(BaseErrorInfoInterface errorInfoInterface) {
-        super(String.valueOf(errorInfoInterface.getResultCode()));
-        this.errorCode = errorInfoInterface.getResultCode();
-        this.errorMessage = errorInfoInterface.getResultMsg();
+        super(String.valueOf(errorInfoInterface.getErrorCode()));
+        this.errorCode = errorInfoInterface.getErrorCode();
+        this.errorMessage = errorInfoInterface.getErrorMessage();
     }
 
     public BusinessException(BaseErrorInfoInterface errorInfoInterface, Throwable cause) {
-        super(String.valueOf(errorInfoInterface.getResultCode()), cause);
-        this.errorCode = errorInfoInterface.getResultCode();
-        this.errorMessage = errorInfoInterface.getResultMsg();
+        super(String.valueOf(errorInfoInterface.getErrorCode()), cause);
+        this.errorCode = errorInfoInterface.getErrorCode();
+        this.errorMessage = errorInfoInterface.getErrorMessage();
     }
 
     public BusinessException(String errorMsg) {

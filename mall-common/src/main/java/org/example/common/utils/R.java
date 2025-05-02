@@ -23,8 +23,22 @@ public class R<T> {
     /**
      * success
      */
+    public static <T> R<T> success(String message) {
+        return new R<>(200, message, null);
+    }
+
+    /**
+     * success
+     */
     public static <T> R<T> success(T data) {
         return new R<>(200, "success", data);
+    }
+
+    /**
+     * success
+     */
+    public static <T> R<T> success(String message,T data) {
+        return new R<>(200, message, data);
     }
 
     /**
@@ -38,7 +52,7 @@ public class R<T> {
      * fail
      */
     public static <T> R<T> error(BaseErrorInfoInterface errorInfo) {
-        return new R<>(errorInfo.getResultCode(), errorInfo.getResultMsg(), null);
+        return new R<>(errorInfo.getErrorCode(), errorInfo.getErrorMessage(), null);
     }
 
 

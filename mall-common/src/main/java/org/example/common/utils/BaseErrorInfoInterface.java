@@ -5,10 +5,10 @@ public interface BaseErrorInfoInterface {
     /**
      * @return result code
      */
-    int getResultCode();
+    int getErrorCode();
 
     /**
      * @return result message
      */
-    String getResultMsg();
+    String getErrorMessage();
 }
