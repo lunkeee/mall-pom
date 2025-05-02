@@ -30,4 +30,6 @@ public interface OrderService {
      * @return Boolean 是否取消成功
      */
     public String cancelOrder();
+
+    void send(String testRabbitmq);
 }

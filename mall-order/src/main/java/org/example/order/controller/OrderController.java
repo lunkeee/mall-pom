@@ -2,15 +2,19 @@ package org.example.order.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.example.order.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @Api(tags = "订单")
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
-
+    @Resource
+    private OrderService orderService;
 
     @ApiOperation(value = "测试")
     @GetMapping("/test")
@@ -50,6 +54,16 @@ public class OrderController {
 
 
         return ResponseEntity.ok("cancelOrder");
+    }
+
+
+    @ApiOperation(value = "测试rabbitmq")
+    @GetMapping("/testRabbitmq")
+    public ResponseEntity<String> testRabbitmq(){
+
+        orderService.send("testRabbitmq");
+
+        return ResponseEntity.ok("testRabbitmq");
     }
 
 }
