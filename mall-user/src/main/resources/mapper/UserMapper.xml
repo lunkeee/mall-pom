@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.example.user.mapper.UserMapper">
+<mapper namespace="org.example.mapper.UserMapper">
     <sql id="MemberDTO_Column">
         t.id,
         t.username,
@@ -8,7 +8,7 @@
         t.sex,
         t.birthday
     </sql>
-    <select id="searchUser" resultType="org.example.user.dto.UserDTO">
+    <select id="searchUser" resultType="org.example.modules.DTO.UserDTO">
         select
         <include refid="MemberDTO_Column"/>
         from

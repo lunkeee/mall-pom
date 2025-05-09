@@ -3,10 +3,10 @@ package org.example.product.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.example.common.utils.R;
-import org.example.product.modules.Request.ProductListRequest;
-import org.example.product.modules.Response.ProductCategoryResponse;
-import org.example.product.modules.Response.ProductResponse;
-import org.example.product.modules.Response.ProductSPUResponse;
+import org.example.modules.DTO.ProductListRequest;
+import org.example.modules.VO.ProductCategoryResponse;
+import org.example.modules.VO.ProductResponse;
+import org.example.modules.VO.ProductSPUResponse;
 import org.example.product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,11 +2,11 @@ package org.example.user.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.example.user.dto.UserDTO;
-import org.example.user.entity.User;
-import org.example.user.qry.UserQry;
+import org.example.modules.DTO.UserDTO;
+import org.example.modules.DO.User;
+import org.example.modules.DTO.UserQry;
 import org.example.user.service.UserService;
-import org.example.user.vo.UserEditVO;
+import org.example.modules.VO.UserEditVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

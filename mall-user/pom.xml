@@ -20,6 +20,12 @@
             <version>${mall.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>mall-mbg</artifactId>
+            <version>${mall.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

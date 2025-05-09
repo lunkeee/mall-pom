@@ -1,13 +1,16 @@
 package org.example.order.service;
 
+import org.example.order.modules.Request.OrderCreateRequest;
+import org.example.order.modules.Response.OrderCreateResponse;
+
 public interface OrderService {
 
     /**
      * 创建订单
      *
-     * @return List<ProductSPU> 订单基本信息
+     * @return OrderCreateResponse 订单基本信息
      */
-    public String createOrder();
+    public OrderCreateResponse createOrder(OrderCreateRequest request);
 
 
     /**

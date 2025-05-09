@@ -1,8 +1,8 @@
 package org.example.user.dao;
 
-import org.example.user.dto.UserDTO;
-import org.example.user.entity.User;
-import org.example.user.qry.UserQry;
+import org.example.modules.DTO.UserDTO;
+import org.example.modules.DO.User;
+import org.example.modules.DTO.UserQry;
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 /**

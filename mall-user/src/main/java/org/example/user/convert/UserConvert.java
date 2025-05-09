@@ -1,7 +1,7 @@
 package org.example.user.convert;
 
-import org.example.user.entity.User;
-import org.example.user.vo.UserEditVO;
+import org.example.modules.DO.User;
+import org.example.modules.VO.UserEditVO;
 
 public class UserConvert {
     // 使用单例模式

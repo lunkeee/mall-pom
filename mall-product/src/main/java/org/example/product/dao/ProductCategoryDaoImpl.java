@@ -2,8 +2,8 @@ package org.example.product.dao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.example.product.mapper.ProductCategoryMapper;
-import org.example.product.modules.DO.ProductCategory;
+import org.example.mapper.ProductCategoryMapper;
+import org.example.modules.DO.ProductCategory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

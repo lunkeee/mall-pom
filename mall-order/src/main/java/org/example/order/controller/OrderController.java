@@ -2,6 +2,10 @@ package org.example.order.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.example.common.utils.BusinessException;
+import org.example.common.utils.R;
+import org.example.order.modules.Request.OrderCreateRequest;
+import org.example.order.modules.Response.OrderCreateResponse;
 import org.example.order.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +31,25 @@ public class OrderController {
 
     @ApiOperation(value = "创建订单")
     @PostMapping("/create")
-    public ResponseEntity<String> createOrder(){
+    public R<OrderCreateResponse> createOrder(@RequestBody OrderCreateRequest request){
 
-        return ResponseEntity.ok("createOrder");
+        try {
+            // 参数校验
+            if (request.getUserId() == 0 || request.getUserId() == -1) {
+                return R.error(4000, "用户ID不能为空");
+            }
+            if (request.getProducts() == null || request.getProducts().isEmpty()) {
+                return R.error(4000, "订单商品不能为空");
+            }
+
+            // 处理订单创建
+            OrderCreateResponse orderCreateResponse = orderService.createOrder(request);
+
+            return R.success("订单创建成功",orderCreateResponse);
+
+        } catch (BusinessException e) {
+            return R.error(e);
+        }
     }
 
     @ApiOperation(value = "获取订单详情")

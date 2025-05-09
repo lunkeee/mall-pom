@@ -2,13 +2,13 @@ package org.example.product.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.utils.RedisUtil;
-import org.example.product.mapper.ProductCategoryMapper;
-import org.example.product.mapper.ProductSKUMapper;
-import org.example.product.mapper.ProductSPUMapper;
-import org.example.product.modules.Request.ProductListRequest;
-import org.example.product.modules.Response.ProductCategoryResponse;
-import org.example.product.modules.Response.ProductResponse;
-import org.example.product.modules.Response.ProductSPUResponse;
+import org.example.mapper.ProductCategoryMapper;
+import org.example.mapper.ProductSKUMapper;
+import org.example.mapper.ProductSPUMapper;
+import org.example.modules.DTO.ProductListRequest;
+import org.example.modules.VO.ProductCategoryResponse;
+import org.example.modules.VO.ProductResponse;
+import org.example.modules.VO.ProductSPUResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

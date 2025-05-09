@@ -2,10 +2,10 @@ package org.example.user.dao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.example.user.dto.UserDTO;
-import org.example.user.entity.User;
-import org.example.user.mapper.UserMapper;
-import org.example.user.qry.UserQry;
+import org.example.modules.DTO.UserDTO;
+import org.example.modules.DO.User;
+import org.example.mapper.UserMapper;
+import org.example.modules.DTO.UserQry;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

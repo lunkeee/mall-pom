@@ -1,7 +1,7 @@
 package org.example.product.dao;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.product.modules.DO.ProductSKU;
+import org.example.modules.DO.ProductSKU;
 
 /**
  * @author 阳光倾洒

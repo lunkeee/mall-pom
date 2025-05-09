@@ -2,10 +2,10 @@ package org.example.user.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.user.dao.UserDao;
-import org.example.user.dto.UserDTO;
-import org.example.user.entity.User;
-import org.example.user.qry.UserQry;
-import org.example.user.vo.UserEditVO;
+import org.example.modules.DTO.UserDTO;
+import org.example.modules.DO.User;
+import org.example.modules.DTO.UserQry;
+import org.example.modules.VO.UserEditVO;
 import org.example.user.convert.UserConvert;
 import org.springframework.stereotype.Service;
 
