@@ -2,9 +2,10 @@ package org.example.order.service;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.common.config.feign.UserClient;
+import org.example.modules.DO.User;
 import org.example.modules.DTO.OrderCreateRequest;
 import org.example.modules.VO.OrderCreateResponse;
-import org.example.user.service.UserService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,12 +20,13 @@ public class OrderServiceImpl implements OrderService{
     private RabbitTemplate rabbitTemplate;
 
     @Resource
-    private UserService userService;
+    private UserClient userClient;
 
     @Override
     @Transactional
     public OrderCreateResponse createOrder(OrderCreateRequest request) {
         //1、获取用户信息
+        User user = userClient.getUserById(request.getUserId());
 
         //2、获取商品信息，检验、锁定库存
         //3、计算总价
