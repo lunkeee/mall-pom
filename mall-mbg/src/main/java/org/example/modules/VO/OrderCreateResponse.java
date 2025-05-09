@@ -1,4 +1,4 @@
-package org.example.order.modules.Response;
+package org.example.modules.VO;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

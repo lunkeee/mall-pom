@@ -2,8 +2,8 @@ package org.example.order.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.order.modules.Request.OrderCreateRequest;
-import org.example.order.modules.Response.OrderCreateResponse;
+import org.example.modules.DTO.OrderCreateRequest;
+import org.example.modules.VO.OrderCreateResponse;
 import org.example.user.service.UserService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;

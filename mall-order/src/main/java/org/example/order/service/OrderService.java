@@ -1,7 +1,7 @@
 package org.example.order.service;
 
-import org.example.order.modules.Request.OrderCreateRequest;
-import org.example.order.modules.Response.OrderCreateResponse;
+import org.example.modules.DTO.OrderCreateRequest;
+import org.example.modules.VO.OrderCreateResponse;
 
 public interface OrderService {
 

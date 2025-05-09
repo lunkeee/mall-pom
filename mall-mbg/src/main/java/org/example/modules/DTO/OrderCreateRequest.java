@@ -1,4 +1,4 @@
-package org.example.order.modules.Request;
+package org.example.modules.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

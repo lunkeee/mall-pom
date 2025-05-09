@@ -1,4 +1,4 @@
-package org.example.order.modules.DO;
+package org.example.modules.DO;
 
 import lombok.Data;
 
