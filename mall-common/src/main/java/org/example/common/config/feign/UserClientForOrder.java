@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
         name = "userClient",
         url = "http://localhost:8081",
         contextId = "userClientForOrder")
-public interface UserClient {
+public interface UserClientForOrder {
     @GetMapping("/user/{id}")
     User getUserById(@PathVariable("id") Long id);
 }
